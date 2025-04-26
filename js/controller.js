@@ -262,8 +262,5 @@ document.querySelector('.m-control button:nth-child(3)')?.addEventListener('clic
         currentModel.rotation.set(0, 0, 0);  // Reset model rotation
         controls.reset();  // Reset orbit controls
         isAnimating = false;
-
-        if (lightLabel) lightLabel.innerText = 'Full Lighting';  // Reset to default light
-        if (cameraLabel) cameraLabel.innerText = 'Front View';  // Reset to default camera
     });
 });
