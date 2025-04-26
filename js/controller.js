@@ -242,6 +242,7 @@ const cameraViews = [
 // Initialize camera index
 let currentCameraIndex = 0;
 
+const cameraLabel = document.getElementById('cameraLabel');
 document.querySelector('.m-control button:nth-child(2)')?.addEventListener('click', () => {
     currentCameraIndex = (currentCameraIndex + 1) % cameraViews.length; 
     const view = cameraViews[currentCameraIndex];
@@ -249,8 +250,7 @@ document.querySelector('.m-control button:nth-child(2)')?.addEventListener('clic
     camera.lookAt(view.look[0], view.look[1], view.look[2]);
 
     // Update view label
-    const label = document.getElementById('cameraLabel');
-    if (label) label.innerText = view.name;
+    if (cameraLabel) cameraLabel.innerText = view.name;
 });
 
 // Reset model button
@@ -262,5 +262,8 @@ document.querySelector('.m-control button:nth-child(3)')?.addEventListener('clic
         currentModel.rotation.set(0, 0, 0);  // Reset model rotation
         controls.reset();  // Reset orbit controls
         isAnimating = false;
+
+        if (lightLabel) lightLabel.innerText = 'Full Lighting';  // Reset to default light
+        if (cameraLabel) cameraLabel.innerText = 'Front View';  // Reset to default camera
     });
 });
